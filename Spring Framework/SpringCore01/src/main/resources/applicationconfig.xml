@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--
+        Using the Attributes we can tell Spring what to do
+        class = location of the class
+        Traditionally when you create object you create the reference as well right? for that "id" attribute is used
+
+    <bean id = "sb" class = "services.SpringBoot"/>
+    <bean id = "java" class = "services.Java"/>
+    -->
+    <!--
+        For Setter Injection attribute is property tag
+        ref = "java" why? because we are injecting java object
+        name = "course" why? because we have created a setter in class TShapedSkill and the variable name is "course"
+   -->
+    <!-- Setter Injection
+    <bean id = "ts" class = "services.TShapedSkills">
+        <property ref = "java" name = "course"/>
+    </bean>
+    -->
+    <!-- Constructor Injection
+    <bean id = "ts" class = "services.TShapedSkills">
+        <constructor-arg ref = "java" name = "course" />
+    </bean>
+    -->
+    <!--
+    Both Setter and Construction Injection are manual wiring which we have to do here
+
+    So for we have Autowiring
+    -->
+<!-- <bean id = "ts" class = "services.TShapedSkills" autowire="byType"/> -->
+    <!--
+    When you do this, spring will ge confused, because as we have set autowire="byType"
+    In both Setters and Constructor Injection ref = "java" or ref = "sb" are classes
+    and name = "course" is the interface, so Spring is getting 2 types i.e. sb, java and getting confused which one to use
+    You can solve this by giving using primary attribute
+    <bean id = "sb" class = "services.SpringBoot" primary="true"/> it will take this and auto wire it
+    <bean id = "java" class = "services.Java"/>
+    -->
+    <bean id = "sb" class = "services.SpringBoot"/>
+    <bean id = "java" class = "services.Java"/>
+    <bean id = "ts" class = "services.TShapedSkills">
+        <property ref = "java" name = "course"/>
+    </bean>
+
+</beans>
