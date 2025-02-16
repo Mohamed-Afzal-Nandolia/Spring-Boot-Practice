@@ -1,6 +1,6 @@
 # 🌱 Welcome to the Spring Framework Repository!
 
-Hello and welcome! 👋 This repository is a structured guide to understanding and implementing the **Spring Framework** and **Spring Boot**. Each section follows a progressive learning path, helping you transition from XML-based configurations to modern annotation-based and Spring Boot approaches. 🚀
+Hello and welcome! 👋 This repository is a structured guide to understanding and implementing the **Spring Framework** and **Spring Boot**. This repository does not contains everything but it will get you started. Each section follows a progressive learning path, helping you transition from XML-based configurations to modern annotation-based and Spring Boot approaches. 🚀
 
 ---
 
@@ -16,16 +16,10 @@ This module demonstrates **Spring’s XML Configuration** approach. You'll learn
 Here, we enhance the **XML-based approach** by incorporating **annotations**. This hybrid model helps transition from XML-heavy configurations to a more declarative way of defining dependencies.
 
 ### 4️⃣ SpringAnnotationApproach
-This module fully embraces **Spring's Annotation-Based Configuration**, eliminating XML and leveraging annotations like `@Component`, `@Autowired`, and `@Configuration` to manage beans.
+This module fully embraces **Spring's Annotation-Based Configuration**, eliminating XML and leveraging Spring Core annotations like `@Component`, `@Autowired`, and `@Configuration` to manage beans.
 
-### 5️⃣ SpringBootApp1
+### 5️⃣ SpringBootApp1, SpringBootApp2, SpringBootApp3
 Your first **Spring Boot application**! 🎉 This section introduces **Spring Boot**, showing how it simplifies configuration and dependency management while providing an embedded server.
-
-### 6️⃣ SpringBootApp2
-This module dives deeper into **Spring Boot’s features**, covering aspects like RESTful web services, dependency injection, and application properties.
-
-### 7️⃣ SpringBootApp3
-The final section explores advanced **Spring Boot concepts**, including microservices, database integration, and best practices for enterprise-level applications.
 
 ---
 
