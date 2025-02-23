@@ -1,0 +1,73 @@
+
+<!-- 1. <configuration> is the root element of the logback.xml file -->
+<configuration>
+    <!-- 2. what will you write inside it? firstly,
+    <appender> outputs the logs, so we are setting where the logs should go
+
+    class="ch.qos.logback.core.ConsoleAppender" this represents the actual console where the logs are generally printed
+    class="ch.qos.logback.core.FileAppender" same way but this will print the logs in a file-->
+    <appender name="myConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+
+        <!-- 6. Here you will have to specify the encode, meaning how the logs will be generated or the format of the logs
+             I am adding the same encoder to both the appender-->
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n
+                <!-- 7. %d{HH:mm:ss.SSS} time, [%thread] which thread, %-5level logging level with left justified and minimum 5 width
+                 %logger{36} name of the logger/package with size of 36 characters, -%msg the actual message, %n new line-->
+            </pattern>
+        </encoder>
+
+    </appender>
+
+    <appender name="myFileAppender" class="ch.qos.logback.core.FileAppender">
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n
+            </pattern>
+        </encoder>
+
+    <!-- 3. Now, ConsoleAppender will print the logs in the console
+        And in the FileAppender we will have to tell him where you should print the logs by using <file>
+        You can also give the proper file path here
+        EX: src/main/java/com/tshaped/SpringBootApp1/Logs/LoggingExample.log -->
+        <file>
+            LoggingExample.log
+        </file>
+    </appender>
+
+    <!-- 4. Now we have to use the appender in the root tag setting the log level and by using the <appender-ref> element-->
+    <root level="INFO">
+        <!-- 5. Here we are using both the appender -->
+        <appender-ref ref="myConsoleAppender"/>
+        <appender-ref ref="myFileAppender"/>
+
+        <appender-ref ref="myRollingFileAppender"/>
+    </root>
+
+    <!-- 8. Lets say you want to generate logs every day in different file
+         We can use the class RollingFileAppender
+         inside which we have to specify the policy SizeAndTimeBasedRollingPolicy -->
+    <appender name="myRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 10. Here you will have to mention the file name pattern
+                 Breakdown: {yy-MM-dd} rollover every day,
+                            {yy-MM-dd_HH} rollover every hour
+                            {yy-MM-dd_HH-mm} rollover every minute
+                            %i is the index number -->
+            <fileNamePattern>LoggingRollingExample-%d{yy-MM-dd_HH-mm}.%i.log</fileNamePattern>
+
+            <!-- 9. If the size of the file exceeds the given size i.e. 10MB a new Log file will be created -->
+            <maxFileSize>10MB</maxFileSize>
+
+            <!-- 10. If you want to set the max number of files it should create set it here.
+                 Here I have set it to 10, meaning after 10 log files, oldest one will be deleted -->
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n
+            </pattern>
+        </encoder>
+    </appender>
+</configuration>
