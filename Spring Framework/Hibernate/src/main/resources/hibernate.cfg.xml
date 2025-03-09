@@ -1,0 +1,24 @@
+<hibernate-configuration xmlns="http://www.hibernate.org/xsd/orm/cfg">
+    <session-factory>
+
+        <!--Configuration Required to connect to the db-->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/telusko</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">root</property>
+
+        <!--For dynamic tables use Update property-->
+        <!--If set to "create", then it will drop the existing one then create a new one-->
+        <!--Using "update" is recommended-->
+<!--        <property name="hibernate.hbm2ddl.auto">update</property>-->
+        <property name="hibernate.hbm2ddl.auto">create</property>
+
+        <!--Hibernate.dialect property tells Hibernate to generate the appropriate SQL statements for the chosen database-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!--To Show and Format the query-->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+    </session-factory>
+</hibernate-configuration>
